@@ -20,11 +20,9 @@ function Leads() {
 					return resultData;
 				})
 
-				
-				setDataID(Object.keys(response.data+" "));
+				setDataID(Object.keys(response.data));
 				//console.log(resultArray)
 				setDataTable(resultArray);
-				
 			
 			})
 			.catch(response => {
@@ -32,7 +30,7 @@ function Leads() {
 				//setLeadsLoaded(false);
 			})
 		
-	}, [dataTable])
+	}, [])
 
 	React.useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -44,8 +42,9 @@ function Leads() {
 	function onDelete(id) {
 		const newList = dataTable.filter((item, index) => index !== id);
 		const newdataID = dataID.filter((item, index) => index === id);
-		//setDataTable(newList)
+		setDataTable(newList)
 
+		console.log(newdataID);
 		serverInstance.delete(`https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder/${newdataID[0]}.json`)
 			.then(response => { 
 				console.log('Delete Successfully');
@@ -54,22 +53,32 @@ function Leads() {
 	}
 
 	function updateStatus(id) {
-	
-		const dataItem = dataTable.filter((item, index) => index === id && item );
-		const newdataURL = dataID.filter((item, index) => index === id);
-
-		console.log(dataItem)
 		
+		const newList = dataTable.filter((item, index) => index === id);
+		const newdataID = dataID.filter((item, index) => index === id);
+
+		setDataTable(prevData => {
+			return prevData.map((item, index) => {
+				return index === id ? {
+					...item,
+					orderStatus: 'Completed'
+				} : item
+			})
+		})
+
+		console.log(newdataID[0])
+	
 		const newOrder = {
-			tea: dataItem[0].tea,
-			addOns: dataItem[0].addOns,
-			price: dataItem[0].price,
-			name: dataItem[0].name,
-			address: dataItem[0].address,
+			tea: newList[0].tea,
+			addOns: newList[0].addOns,
+			price: newList[0].price,
+			name: newList[0].name,
+			address: newList[0].address,
 			orderStatus: 'Completed..'
 		}
+		// console.log(newdataURL);
 
-		serverInstance.put(`https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder/${newdataURL[0]}.json`, newOrder)
+		serverInstance.put(`https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder/${newdataID[0]}.json`, newOrder)
 			.then(response => {
 				console.log('Updated Successfully');
 				console.log(response)
@@ -116,6 +125,12 @@ function Leads() {
 				});
 				return json
 			},
+			// selector: row => {
+			// 	const json = Object.keys(row.addOns).map(item => {
+			// 		return item
+			// 	});
+			// 	return json
+			// },
 			sortable: false,
 			wrap: true,
 			minWidth: '200px',

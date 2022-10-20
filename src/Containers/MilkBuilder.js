@@ -84,14 +84,11 @@ export default function MilkBuilder(props) {
             orderStatus: 'Preparing..'
         }
         
-
         serverInstance.post(REGISTER_URL, order)
             .then(response => {
                 setOrderSuccess([response.status]);
                 setModalState(false);
                 setSpinnerState(false);
-
-                
             })
             .catch(error => {
 
@@ -108,6 +105,19 @@ export default function MilkBuilder(props) {
 
     function openModal() {
         setModalState(true);
+    }
+
+    function newOrder() {
+        setOrderSuccess(false)
+        setAddOns({
+            pearls: 0,
+            creamChesse: 0,
+            cocoJelly: 0,
+            coffeJelly: 0,
+            ice: 0,
+            extraMilk: 0,
+            syrup: 0,
+        })
     }
 
     const controlsItem = Object.keys(addOns).map(addOn => {
@@ -142,7 +152,7 @@ export default function MilkBuilder(props) {
                         <React.Fragment>
                             <div className='text--center'>
                                 <h1 style={{ color: 'green', marginBottom: '30px' }}>Order Sucess</h1>
-                                <button className='button--primary' onClick={() => setOrderSuccess(false)}>Add new Order</button>
+                                <button className='button--primary' onClick={newOrder}>Add new Order</button>
                             </div>
                         </React.Fragment>
                     ) : (
