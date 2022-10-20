@@ -1,0 +1,75 @@
+// include all templated CSS properties here such as font sizes, margin, padding, color, background color, etc
+
+// for width
+$maxWidth   : 1024px; // can be use as max width of the container
+
+// for fonts
+$regularFont:  Helvetica, Arial, sans-serif; // default font families and error support for any html tags
+$fontA      :  Helvetica, Arial, sans-serif;
+
+
+// for colors
+$red            : #ba0000;
+$darkRed        : #910a2d;
+$orange         : #FF9500;
+$darkOrange     : #ee6730;
+$yellow         : #efbc30;
+$olive          : #B5CC18;  
+$green       	: #8dc73f;
+$teal           : #058fa7;
+$blue           : #00bcdd;
+$lightblue		: #f5fcff;
+$violet         : #6435C9;
+$purple         : #A333C8;
+$pink           : #E03997;
+$brown          : #A5673F;
+$gray-01        : #f7f7f7;
+$gray-02        : #999999;
+$gray-03        : #c7c7c7;
+$gray-04        : #818181;
+$gray-05        : #414141;
+$gray-06        : #101010;
+$black          : #000000;
+$white	        : #ffffff;
+
+/* Colors */
+$brandColor     : #101010;
+$primaryColor   : #000000;
+$secondaryColor : #999999;
+$defaultColor   : #101010;
+$navColor       : #d5d5d5;
+
+
+$successColor   : $green;
+$infoColor      : $brandColor;
+$warningColor   : $yellow;
+$dangerColor    : $red;
+
+$lightBg        : $gray-01;
+$grayBg         : $gray-02;
+$darkBg         : $black;
+
+// for margin and padding
+$spaceOne   : 10px;
+$spaceTwo   : 20px;
+$spaceThree : 30px;
+$spaceFour  : 40px;
+$spaceFive  : 50px;
+
+// for image sprite
+//$imgSprite: url('');
+
+%icon-mazda {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
