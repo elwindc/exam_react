@@ -1,0 +1,160 @@
+
+.table-of-contents {
+    padding: 30px 0 15px !important; 
+    background: #f2f2f2; 
+    margin-bottom: 30px; 
+    border-radius: 4px; 
+}
+
+.table-of-contents a {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 767px) {
+    .table-of-contents {
+        padding: 30px 20px 30px 20px !important;
+    }
+}
+
+.table-of-contents {
+
+    ul, ol {
+
+        li {
+            padding-bottom: 0 !important; 
+
+            @include breakpoint(tablet2) {
+                margin: 6px 0;
+            }
+
+            a {
+                &.jq-sec {
+
+                    @include breakpoint(tablet2) {
+                        padding: 4px 0;
+                        display: block;
+                        line-height: 1.2;
+
+                    }
+                }
+            }
+
+            ol, ul {
+
+                &:last-child {
+                    padding-bottom: 0 !important;
+                }
+            }   
+        }
+        
+    }
+
+    p, h2, h3, h4, h5, h6 {
+        padding-left: 1.7rem;
+        padding-right: 1.7rem;
+        padding-bottom: 1rem !important;
+        font-weight: bold;
+        margin: 0 !important;
+
+        @include breakpoint(tablet2) {
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 1rem !important;
+        }
+    }
+}
+
+
+.table-container {
+
+	table {
+		width: 100%;
+
+	}
+
+	th {
+		max-width: 400px;
+		
+		&.data-list-header {
+			border-bottom: 2px solid #d9d9d9;
+			padding: 8px 15px;
+			text-align: left;
+
+
+			
+		}
+
+		&:first-child {
+			min-width: 200px;
+		}
+
+		&.mat-header-cell {
+
+			&:first-child {
+				padding-left: 45px;
+			}
+		}
+	}
+
+	td {
+		max-width: 350px;
+
+		&:nth-child(even) {
+			background: #f9f9f9;
+		}
+
+
+		&.mat-cell {
+
+			&:first-child {
+				padding-left: 45px;
+			}
+		}
+	}
+
+	tr {
+		border-bottom: 1px solid #d9d9d9;
+
+
+		&.mat-header-row, &.mat-row {
+			height: auto;
+		}
+
+
+		&:first-child {
+
+			td.data-list-link:first-child {
+				
+				&:before {
+					content:'NEW';
+					font-size: 10px;
+					font-weight: bold;
+					color: $orange;
+					background: transparent;
+					left: 20px;
+					opacity: 1;
+				}
+			}
+		}
+
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		td {
+			padding: 14px 15px;
+
+			img {
+				display: inline-block;
+				vertical-align: middle;
+				max-width: 15px;
+				margin-right: 8px;
+				position: relative;
+				top: -1px;
+			}
+	
+		}
+	}	
+}

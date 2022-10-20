@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3010b0ee.css",
+    "main.js": "/static/js/main.01061255.js",
+    "static/js/787.d67d8519.chunk.js": "/static/js/787.d67d8519.chunk.js",
+    "static/media/milk-tea.png": "/static/media/milk-tea.245cd8460fa99f6384a4.png",
+    "static/media/loader.gif": "/static/media/loader.c577c023cb0d0c7442f1.gif",
+    "index.html": "/index.html",
+    "main.3010b0ee.css.map": "/static/css/main.3010b0ee.css.map",
+    "main.01061255.js.map": "/static/js/main.01061255.js.map",
+    "787.d67d8519.chunk.js.map": "/static/js/787.d67d8519.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3010b0ee.css",
+    "static/js/main.01061255.js"
+  ]
+}

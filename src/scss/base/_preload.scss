@@ -1,0 +1,218 @@
+.loading-large {
+  opacity: 1;
+
+  &.loading-text {
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  &.loading-text-btn {
+    height: 50px;
+    min-width: 200px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+
+  }
+
+  &.loading-text-title {
+    height: 65px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+
+  }
+}
+
+.animated-background {
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f2f2f2;
+  background: linear-gradient(to right, #F6F6F6 12%, #F0F0F0 18%, #F6F6F6 33%);
+  background-size: 800px 104px;
+  height: 96px;
+  position: relative;
+}
+
+.loading-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  @extend .animated-background;
+}
+
+.loading-text-title {
+  height: 20px;
+  width: 65%;
+  margin: 0 0 20px;
+  @extend .animated-background;
+}
+
+.loading-text-btn {
+  width: 100px;
+  border-radius: 25px;
+  height: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @extend .animated-background;
+}
+
+.loading-text {
+  height: 15px;
+  width: 100%;
+  margin: 8px 0;
+  @extend .animated-background;
+}
+
+.loader-line {
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #f7eade;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+
+  &.activated {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.bottom {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.loader-line:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: rgba($orange, 0.8);
+  animation: loadingss 1.6s linear infinite;
+}
+
+
+@keyframes loadingss {
+  from {
+    left: -200px;
+    width: 30%;
+  }
+
+  50% {
+    width: 30%;
+  }
+
+  70% {
+    width: 70%;
+  }
+
+  80% {
+    left: 50%;
+  }
+
+  95% {
+    left: 120%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+
+// Animation
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+
+  100% {
+    background-position: 468px 0
+  }
+}
+
+
+
+/*** Loading Ring ***/
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring span {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid $orange;
+  border-radius: 50%;
+  animation: lds-ring 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: $orange transparent transparent transparent;
+}
+
+.lds-ring span:nth-child(1) {
+  animation-delay: -0.40s;
+}
+
+.lds-ring span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.lds-ring span:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-fullscreen {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  @include transform(scale(0));
+  @include transition(opacity 0.4s cubic-bezier(0.645, 0.045, 0.355, 1));
+
+  &.active {
+    pointer-events: auto;
+    visibility: visible;
+    @include transform(scale(1));
+    opacity: 1;;
+  }
+
+  .lds-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+}
+
