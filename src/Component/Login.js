@@ -3,7 +3,7 @@ import { LoginContext } from '../Context/LoginContext';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginState } from '../Context/UsersReducer';
 
-const USER_REGEX = /^\S*$/;
+const USER_REGEX = /^(?!\s*$)[-a-zA-Z0-9_:,.\s]{1,100}$/;
 
 function Login(props) {
     const { user, setUser } = React.useContext(LoginContext);

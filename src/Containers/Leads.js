@@ -121,7 +121,9 @@ function Leads() {
 			name: "Addons",
 			selector: row => {
 				const json = Object.keys(row.addOns).map(item => {
-					return (<SplitCamelCase text={' '+item } ></SplitCamelCase >)
+					if (row.addOns[item] !== 0) {
+						return (<SplitCamelCase text={' ' + item} ></SplitCamelCase >)
+					}
 				});
 				return json
 			},
