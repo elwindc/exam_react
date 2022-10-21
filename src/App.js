@@ -1,8 +1,6 @@
 
 import React from 'react';
-import HeaderWrap from './Component/Layout/HeaderWrap';
-import { Route, Routes, Switch } from 'react-router-dom';
-import Login from './Component/Login';
+import { Route, Routes } from 'react-router-dom';
 import Leads from './Containers/Leads';
 import MilkBuilder from './Containers/MilkBuilder';
 import { LoginContext } from './Context/LoginContext';

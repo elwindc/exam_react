@@ -9,8 +9,6 @@ import { LoginContext } from '../../Context/LoginContext';
 const OrderSummary = (props) => {
 
     const { user } = React.useContext(LoginContext);
-
-   // console.log(props.addOnsList)
     
     const summary = Object.keys(props.addOnsList).map(item => {
         if (props.addOnsList[item] !== 0) {

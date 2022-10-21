@@ -4,6 +4,8 @@ import DataTable from 'react-data-table-component';
 import Spinner from '../Component/UI/Spinner/Spinner';
 import SplitCamelCase from '../Component/splitCamelCase';
 
+const serverURL = 'https://this-is-the-test-3d4bb.firebaseio.com'
+
 function Leads() {
 
 	const [leadsLoading, setLeadsLoading] = React.useState(true);
@@ -12,7 +14,7 @@ function Leads() {
 	
 	React.useEffect(() => {
 		
-		serverInstance.get('https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder.json')
+		serverInstance.get(serverURL+'/milkTeaOrder.json')
 			.then(response => {		
 
 				const resultArray = Object.keys(response.data).map((item, index) => {
@@ -45,9 +47,9 @@ function Leads() {
 		setDataTable(newList)
 
 		console.log(newdataID);
-		serverInstance.delete(`https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder/${newdataID[0]}.json`)
+		serverInstance.delete(`${serverURL}/milkTeaOrder/${newdataID[0]}.json`)
 			.then(response => { 
-				console.log('Delete Successfully');
+				// console.log('Delete Successfully');
 				console.log(response)
 			})
 	}
@@ -76,9 +78,8 @@ function Leads() {
 			address: newList[0].address,
 			orderStatus: 'Completed..'
 		}
-		// console.log(newdataURL);
 
-		serverInstance.put(`https://this-is-the-test-3d4bb.firebaseio.com/milkTeaOrder/${newdataID[0]}.json`, newOrder)
+		serverInstance.put(`${serverURL}/milkTeaOrder/${newdataID[0]}.json`, newOrder)
 			.then(response => {
 				console.log('Updated Successfully');
 				console.log(response)
@@ -127,12 +128,6 @@ function Leads() {
 				});
 				return json
 			},
-			// selector: row => {
-			// 	const json = Object.keys(row.addOns).map(item => {
-			// 		return item
-			// 	});
-			// 	return json
-			// },
 			sortable: false,
 			wrap: true,
 			minWidth: '200px',
