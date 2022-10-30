@@ -1,7 +1,7 @@
 import React from "react";
 import BackDrop from "../Backdrop/Backdrop";
 
-export default function Modal(props) {
+function Modal(props) {
 
     return(
         <BackDrop show = { props.show } clicked = { props.hideBackdrop } >
@@ -14,3 +14,6 @@ export default function Modal(props) {
         </BackDrop>
     )
 } 
+
+
+export default React.memo(Modal);

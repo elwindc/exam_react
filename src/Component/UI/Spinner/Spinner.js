@@ -1,3 +1,4 @@
+import React from 'react';
 import loader from '../../../images/loader.gif';
 import './Spinner.scss';
 
@@ -13,4 +14,4 @@ const Spinner = (props) => {
     )
 }
 
-export default Spinner;
+export default React.memo(Spinner);

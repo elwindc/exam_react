@@ -5,4 +5,4 @@ const Button = (props) => {
     return (<button onClick={props.clicked} className={ 'button--secondary ' + props.type}>{props.children}</button>)
 }
 
-export default Button
+export default React.memo(Button)

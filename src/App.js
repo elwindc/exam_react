@@ -1,6 +1,8 @@
 
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import HeaderWrap from './Component/Layout/HeaderWrap';
+import { Route, Routes, Switch } from 'react-router-dom';
+import Login from './Component/Login';
 import Leads from './Containers/Leads';
 import MilkBuilder from './Containers/MilkBuilder';
 import { LoginContext } from './Context/LoginContext';
@@ -19,7 +21,7 @@ function App() {
 
 				<Routes>
 					<Route path="/leads" element={<Leads />}></Route>
-					<Route path="/milkbuilder" exact element={<MilkBuilder />}></Route>
+					<Route path="/" exact element={<MilkBuilder />}></Route>
 				</Routes>
 			</LoginContext.Provider>
 		</div>

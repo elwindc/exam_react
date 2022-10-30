@@ -1,4 +1,6 @@
-export default function SplitCamelCase(props) {
+import React from "react";
+
+function SplitCamelCase(props) {
     // props.value.replace(/([A-Z])/g, ' $1');
     const text = props.text.split(/(?=[A-Z])/).join(' ');
 
@@ -10,3 +12,5 @@ export default function SplitCamelCase(props) {
     
 
 }
+
+export default React.memo(SplitCamelCase);

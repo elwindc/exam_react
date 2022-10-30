@@ -14,4 +14,4 @@ const HeaderWrap = (props) => {
     );
 }
 
-export default HeaderWrap;
+export default React.memo(HeaderWrap);

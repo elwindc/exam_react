@@ -8,6 +8,7 @@ import { LoginContext } from '../Context/LoginContext';
 import { useSelector } from 'react-redux';
 import HeaderWrap from '../Component/Layout/HeaderWrap';
 import Login from '../Component/Login';
+import axios from 'axios';
 
 const INGREDIENTS_PRICE = {
     pearls: 10,
@@ -47,7 +48,6 @@ export default function MilkBuilder(props) {
         "Bubble Tea", "Black Tea", "Green Tea", "Almond Tea", "House Tea"
     ]
 
-
     function onCheck(event, addOn) {
         const updatedCount = event.target.checked ? 1 : 0;
         const updatedIngredients = { ...addOns }
@@ -83,41 +83,39 @@ export default function MilkBuilder(props) {
             address: user.address,
             orderStatus: 'Preparing..'
         }
+
+        const cancelToken = axios.CancelToken.source();
         
-        serverInstance.post(REGISTER_URL, order)
+
+        serverInstance.post(REGISTER_URL, order, {
+            cancelToken: cancelToken.token,
+        })
             .then(response => {
                 setOrderSuccess([response.status]);
                 setModalState(false);
                 setSpinnerState(false);
+
+                
             })
             .catch(error => {
 
-                setErrMsg(error.message);
-                if (!error?.response) {
-                    setErrMsg('No Server Response');
-                }  else {
-                    setErrMsg('Order Failed')
+                if (axios.isCancel(error)) {
+                    setErrMsg('Cancelled Token');
+                    console.log('Cancelled');
+                } else {
+                    console.log('Abort');
                 }
                 console.log(errMsg);
                 
             });
+        
+        return () => {
+            cancelToken.cancel();
+        }
     }
 
     function openModal() {
         setModalState(true);
-    }
-
-    function newOrder() {
-        setOrderSuccess(false)
-        setAddOns({
-            pearls: 0,
-            creamChesse: 0,
-            cocoJelly: 0,
-            coffeJelly: 0,
-            ice: 0,
-            extraMilk: 0,
-            syrup: 0,
-        })
     }
 
     const controlsItem = Object.keys(addOns).map(addOn => {
@@ -152,7 +150,7 @@ export default function MilkBuilder(props) {
                         <React.Fragment>
                             <div className='text--center'>
                                 <h1 style={{ color: 'green', marginBottom: '30px' }}>Order Sucess</h1>
-                                <button className='button--primary' onClick={newOrder}>Add new Order</button>
+                                <button className='button--primary' onClick={() => setOrderSuccess(false)}>Add new Order</button>
                             </div>
                         </React.Fragment>
                     ) : (

@@ -21,6 +21,13 @@ function Login(props) {
         }
     }, [user])
 
+
+    // function handleLogin(e) {
+    //     e.preventDefault();
+    //     dispatch(loginState({ test: true }))
+    // }
+
+
     function handleChange(e) {
         const { name, value, type, checked } = e.target
         setUser(prevFormData => {
@@ -77,4 +84,4 @@ function Login(props) {
     )
 }
 
-export default Login
+export default React.memo(Login)

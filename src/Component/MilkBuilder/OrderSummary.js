@@ -10,14 +10,13 @@ const OrderSummary = (props) => {
 
     const { user } = React.useContext(LoginContext);
     
-    const summary = Object.keys(props.addOnsList).map(item => {
+    const summary = React.useMemo(() => Object.keys(props.addOnsList).map(item => {
         if (props.addOnsList[item] !== 0) {
             return (
                 <li key={item}><SplitCamelCase text={item}></SplitCamelCase></li>
             )
         }
-       
-    })
+    }), [props])
 
     return (
         <React.Fragment>
@@ -41,4 +40,4 @@ const OrderSummary = (props) => {
     )
 }
 
-export default OrderSummary;
+export default React.memo(OrderSummary);
