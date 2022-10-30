@@ -21,7 +21,7 @@ function App() {
 
 				<Routes>
 					<Route path="/leads" element={<Leads />}></Route>
-					<Route path="/" exact element={<MilkBuilder />}></Route>
+					<Route path="/milkbuilder" exact element={<MilkBuilder />}></Route>
 				</Routes>
 			</LoginContext.Provider>
 		</div>
